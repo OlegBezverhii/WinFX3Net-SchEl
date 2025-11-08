@@ -2,4 +2,6 @@
 
 WinFX3Net от Schneider Electric (ESMI). Установщик в файлах.
 
-В релизах будет лежать патченный файл, пока логика очень похожа на старый проект: https://github.com/OlegBezverhii/WinFXNet-SchEl
+Патч для x32dbg лежит в папке patch.
+
+В релизах лежит патченный файл, а лицензию можно забрать тут: https://github.com/OlegBezverhii/WinFXNet-lic-patcher
