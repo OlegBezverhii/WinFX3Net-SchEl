@@ -1,0 +1,80 @@
+//0066A748
+function TNewLicenseKey.Verify:Cardinal;
+begin
+{*
+ 0066A748    push        ebp
+ 0066A749    mov         ebp,esp
+ 0066A74B    add         esp,0FFFFFFDC
+ 0066A74E    mov         dword ptr [ebp-4],eax
+ 0066A751    mov         eax,dword ptr [ebp-4]
+ 0066A754    call        00669814
+ 
+ 0066A759    mov         dword ptr [ebp-0C],eax
+ 0066A75C    cmp         dword ptr [ebp-0C],0
+ (xor eax, eax + NOP)
+ 
+>0066A760    je          0066A76D
+ (JE мы меняем на JMP)
+
+ (Далее делаем аналогично)
+ 0066A77A    mov         dword ptr [ebp-0C],eax
+ 0066A77D    cmp         dword ptr [ebp-0C],0
+ 
+>0066A781    je          0066A78E
+
+ 0066A7A4    mov         dword ptr [ebp-0C],eax
+ 0066A7A7    cmp         dword ptr [ebp-0C],0
+ 
+>0066A7AB    je          0066A7BD
+
+ 0066A7C5    mov         dword ptr [ebp-0C],eax
+ 0066A7C8    cmp         dword ptr [ebp-0C],0
+ 
+>0066A7CC    je          0066A7DE
+
+ 0066A7E6    mov         dword ptr [ebp-0C],eax
+ 0066A7E9    cmp         dword ptr [ebp-0C],0
+ 
+>0066A7ED    je          0066A7FF
+
+ 0066A80F    mov         dword ptr [ebp-0C],eax
+ 0066A812    cmp         dword ptr [ebp-0C],0
+ 
+>0066A816    je          0066A828
+
+ 0066A82B    cmp         word ptr [eax+30],1;TNewLicenseKey.FKeyData:TLicenseKeyData
+>0066A830    jbe         0066A843
+ (jbe мы меняем на JMP)
+
+>0066A84C    jb          0066A874
+ (JB мы меняем на JMP)
+ 
+>0066A884    jbe         0066A897
+(JBE мы меняем на JMP)
+
+>0066A8B2    jae         0066A961
+(всю инструкцию на NOP)
+
+>0066A8CE    jbe         0066A8F0
+(JBE мы меняем на JMP)
+
+ 0066AAA0    ret
+*}
+end;
+
+//00792AD4
+function sub_00792AD4:?;
+begin
+{*
+
+ 00794EA4    mov         eax,[007C6444];^gvar_007CC838
+ 00794EA9    cmp         byte ptr [eax],0
+>00794EAC    je          00794EB5
+
+*}
+end;
+
+Поэтому JE мы NOPим, чтобы случайно не перейти и дальше код нас выведет на 00794EB5 и мы выйдем из функции с установленным в регистре единичкой.
+
+
+Сделано все по аналогии, у функции 0066A748 смещение на относительно старого адреса в 7.4 - 0066A690.
